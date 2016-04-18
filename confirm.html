@@ -1,0 +1,30 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>QR Confirmation</title>
+
+</head>
+
+<body>
+
+
+<div class="col-md-8">
+    <h3>Confirmation</h3>
+    <p class="lead">QR code has been sent to your email address. Thank you!</p>
+    
+    <?php 
+        ob_start();
+        include('phpqrcode/qrlib.php'); 
+         
+        // outputs image directly into browser, as PNG stream 
+        QRcode::png('This is a QR code', false, QR_ECLEVEL_M, 5);
+        
+    ?>
+</div>
+
+
+</body>
+</html>

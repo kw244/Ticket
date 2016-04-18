@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+    <title>QR Test</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+	<!-- Section: contact -->
+    <section id="contact">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+
+                    <div class="section-heading">
+                    <h2>Generate your QR code</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <div class="row">
+        <div class="col-lg-8">
+            <form id="contact-form" method="post" action="simple.php">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" placeholder="Enter name" name="name" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Send to Email Address</label>
+                                <input type="email" id="email" placeholder="Enter email" name="email" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="name">QR message</label>
+                            <textarea name="message" id="message" rows="1"  required="required"
+                                placeholder="Message"></textarea>
+                        </div>
+                        <button type="submit" id="btnContactUs">Submit</button>
+                    </div>
+ 
+
+                </div>
+            </form>
+        </div>
+            
+    </div>
+		
+
+
+
+	</section>
+	<!-- /Section: contact -->
+
+
+    <!-- Core JavaScript Files -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>
