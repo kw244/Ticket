@@ -9,6 +9,7 @@
   <link rel="icon" href="resources/tenko-logo.png">
   
   <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/owl.carousel.css">
   <link rel="stylesheet" href="css/jquery-ui.css">
@@ -51,52 +52,89 @@
 <!-- Start About -->
 <section id="events">
   <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2 preamble">
-        <h3>Upcoming Events</h3>
-      </div>    
-      <div class="col-md-4 event-frame">
-        <div class= "image-frame">
-            <img src="resources/event-img-1.jpg" alt="" class="img-responsive">
-        </div>
-        <h4>Modern Art Exhibit</h4>
-        <p class="date-time">24 - 25 April 2016</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates quibusdam ullam tenetur facilis cupiditate iusto laudantium, ex nobis.</p>
-      </div>
-      <div class="col-md-4 event-frame">
+  
+        <div class="row">
+        <div class="col-md-8 col-md-offset-2 preamble">
+            <h3>Upcoming Events v1</h3>
+        </div>   
+        
+        <div class="col-md-4 event-frame">
             <div class= "image-frame">
-        <img src="resources/event-img-2.jpg" alt="" class="img-responsive">
+                <img src="resources/event-img-1.jpg" alt="" class="img-responsive">
+            </div>
+            <h4>MODERN ART EXHIBIT</h4>
+            <p class="date-time">2016-04-24 09:00:00</p>
+            <p>This is the description for MODERN ART EXHIBIT</p>
         </div>
-        <h4>Retail Trade Show</h4>
-        <p class="date-time">20 - 21 April 2016</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates quibusdam ullam tenetur facilis cupiditate iusto laudantium, ex nobis.</p>
-      </div>
-      <div class="col-md-4 event-frame">
-        <div class= "image-frame">
-            <img src="resources/event-img-3.jpg" alt="" class="img-responsive">
+        <div class="col-md-4 event-frame">
+            <div class= "image-frame">
+                <img src="resources/event-img-2.jpg" alt="" class="img-responsive">
+            </div>
+            <h4>RETAIL TRADE SHOW</h4>
+            <p class="date-time">2016-04-20 11:00:00</p>
+            <p>This is the description for RETAIL TRADE SHOW</p>
         </div>
-        <h4>Innovation Fair</h4>
-        <p class="date-time">29 April - 1 May 2016</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates quibusdam ullam tenetur facilis cupiditate iusto laudantium, ex nobis.</p>
-      </div>
-      <div class="col-md-4 event-frame">
-        <div class= "image-frame">
-            <img src="resources/event-img-4.jpg" alt="" class="img-responsive">
+        <div class="col-md-4 event-frame">
+            <div class= "image-frame">
+                <img src="resources/event-img-3.jpg" alt="" class="img-responsive">
+            </div>
+            <h4>INNOVATION FAIR</h4>
+            <p class="date-time">2016-04-29 09:00:00</p>
+            <p>This is the description for INNOVATION FAIR</p>
         </div>
-        <h4>Makers Workshop</h4>
-        <p class="date-time">29 April 2016</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates quibusdam ullam tenetur facilis cupiditate iusto laudantium, ex nobis.</p>
-      </div>
-      <div class="col-md-4 event-frame">
-        <div class= "image-frame">
-            <img src="resources/event-img-5.jpg" alt="" class="img-responsive">
-        </div>  
-        <h4>Childcare Seminar</h4>
-        <p class="date-time">30 April 2016</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates quibusdam ullam tenetur facilis cupiditate iusto laudantium, ex nobis.</p>
-      </div>
+        
+        <div class="clearfix visible-md-block"></div>
+        
+        <div class="col-md-4 event-frame">
+            <div class= "image-frame">
+                <img src="resources/event-img-4.jpg" alt="" class="img-responsive">
+            </div>
+            <h4>MAKERS WORKSHOP</h4>
+            <p class="date-time">2016-04-29 09:00:00</p>
+            <p>This is the description for MAKERS WORKSHOP</p>
+        </div>
+        <div class="col-md-4 event-frame">
+            <div class= "image-frame">
+                <img src="resources/event-img-5.jpg" alt="" class="img-responsive">
+            </div>
+            <h4>CHILDCARE SEMINAR</h4>
+            <p class="date-time">2016-04-30 10:00:00</p>
+            <p>This is the description for CHILDCARE SEMINAR</p>
+        </div>    
     </div>
+  
+    
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2 preamble">
+            <h3>Upcoming Events v2</h3>
+        </div>   
+        <?php
+            //load helper functions for database connection
+            require_once("database/connection.php");
+            
+            //open database connection
+            $mysqli = openConnection();
+        
+            $eventArray = getEvents($mysqli);
+            displayEvents($eventArray);
+        
+            // close connection 
+            closeConnection($mysqli);
+        ?>
+    </div>
+    
   </div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
 </section>
 <!-- End About -->
 
