@@ -5,7 +5,7 @@
  */
 
 	// include the configs / constants for the database connection
-	require_once("database/db.php");
+	require_once("db.php");
 	
 	//open database connection
 	function openConnection(){
@@ -53,7 +53,11 @@
         $eventArray = array();
         
         while($row = $results->fetch_array()){
-            $tempEvent = new Event($row["event_name"], $row["event_start"], $row["event_end"], $row["event_description"], $row["event_image"]);
+            //format SQL datetime into more human-friendly text
+            $formattedStart = date("j M Y - g:ia", strtotime($row["event_start"]));
+            $formattedEnd = date("j M Y - g:ia", strtotime($row["event_end"]));
+            
+            $tempEvent = new Event($row["event_name"], $formattedStart, $formattedEnd, $row["event_description"], $row["event_image"]);
             array_push($eventArray, $tempEvent);
         }
         return $eventArray;
