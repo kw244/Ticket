@@ -66,7 +66,7 @@
             <img id="event-image" src="" alt="" class="img-responsive">
         </div>
         </div>
-        <div class="col-md-8 col-md-offset-4 event-info">
+        <div class="col-md-8 event-info">
             <p>Event Time: <span id="event-time"></span></p>
             <p>Event Description: <span id="event-description"></span></p>
             <p>Event Details: <span id="event-details"></span></p>
@@ -110,7 +110,15 @@
             dataType:"json",
             success: function(response){
                 console.log(response);
-            }
+                $("#event-name").text(response.name);
+                $("#event-image").attr("src",response.image);
+                $("#event-time").text(response.start);
+                $("#event-description").text(response.description);
+                
+                
+                $("#event-details").text(response.details);
+                $("#event-location").text(response.location);
+            }                
         });
     });
 

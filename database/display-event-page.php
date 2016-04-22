@@ -7,7 +7,7 @@
 
     //retrieve and display event data
     $eventId = (int) $_GET["id"];
-    $eventObject = getEvent($mysqli, $eventId);
+    $eventObject = getEventById($mysqli, $eventId);
     echo json_encode($eventObject);
     
     // close connection 
