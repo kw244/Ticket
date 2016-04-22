@@ -57,10 +57,36 @@
             $formattedStart = date("j M Y - g:ia", strtotime($row["event_start"]));
             $formattedEnd = date("j M Y - g:ia", strtotime($row["event_end"]));
             
-            $tempEvent = new Event($row["event_name"], $formattedStart, $formattedEnd, $row["event_description"], $row["event_image"]);
+            $tempEvent = new Event($row["event_name"], $formattedStart, $formattedEnd, $row["event_blurb"], $row["event_image"]);
             array_push($eventArray, $tempEvent);
         }
         return $eventArray;
+    }
+    
+    //given an EventId, return the event information from the database as an Event object
+	function getEvent($mysqli, $eventId){
+	
+        //create the prepared statement
+		$query = "SELECT * FROM events WHERE event_id=?";
+		$statement = $mysqli->prepare($query);
+		
+		//bind parameters for markers where (s=string, i=integer, d=double, b=blob)
+		$statement->bind_param('i',$eventId);
+		
+		//execute query
+		$statement->execute();
+		
+		//bind result variables
+		$statement->bind_result($event_id,$event_name,$event_start,$event_end,$event_blurb,$event_description,$event_location,$event_image);
+        
+        while($statement->fetch()){
+            //format SQL datetime into more human-friendly text
+            $formattedStart = date("j M Y - g:ia", strtotime($event_start));
+            $formattedEnd = date("j M Y - g:ia", strtotime($event_end));
+            
+            $tempEvent = new Event($event_name, $formattedStart, $formattedEnd, $event_blurb, $event_image);
+        }
+        return $tempEvent;    
     }
     
     

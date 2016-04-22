@@ -51,13 +51,33 @@
 
 <!-- Start About -->
 <section id="events">
+  
   <div class="container">
     
-    <div class="row" id="eventGrid">
+    <!-- Include unique event id so that we can pull the necessary data from our database -->
+    <div class="row" id="eventGrid" data-eventid="6">
         <div class="col-md-8 col-md-offset-2 preamble">
-            <h3>Upcoming Events</h3>
-        </div>   
-        <!-- grid of events gets populated here -->
+            <h3 id="event-name"></h3>
+        </div> 
+        
+        <!-- event page gets populated here -->
+        <div class="col-md-4 event-frame">
+        <div class= "image-frame">
+            <img id="event-image" src="" alt="" class="img-responsive">
+        </div>
+        </div>
+        <div class="col-md-8 col-md-offset-4 event-info">
+            <p>Event Time: <span id="event-time"></span></p>
+            <p>Event Description: <span id="event-description"></span></p>
+            <p>Event Details: <span id="event-details"></span></p>
+            <p>Event Location: <span id="event-location"></span></p>
+        </div>
+        <div class="col-md-8 col-md-offset-4 event-tickets">
+        </div>
+        <div class="col-md-8 col-md-offset-4 event-social">
+        </div>
+        
+        
         
     </div>
     
@@ -80,12 +100,16 @@
 <script src="js/jquery.ui.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
+        var eventid =  document.getElementById("eventGrid").dataset.eventid;
+        console.log(eventid);
+        
         $.ajax({
             type:"GET",
-            url:"database/display-events.php",
-            dataType:"html",
+            data:{'id': eventid},
+            url:"database/display-event-page.php",
+            dataType:"json",
             success: function(response){
-                $("#eventGrid").append(response); 
+                console.log(response);
             }
         });
     });
