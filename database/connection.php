@@ -48,6 +48,21 @@
         }
     }
     
+    //we define the Ticket class along with its constructor
+    class Ticket{
+        public $id;
+        public $name;
+        public $price;
+        
+        
+        public function __construct($ticket_id, $ticket_name, $ticket_price) {
+              $this->id = $ticket_id;
+              $this->name = $ticket_name;
+              $this->price = $ticket_price;
+              
+        }
+    }
+    
     //get and return the events information from the database as an array of Event objects
 	function getEvents($mysqli){
 		
@@ -96,6 +111,9 @@
     }
     
     
+    
+    
+    
     //given an array of Event objects, it prints their info out into the required html
     function displayEvents($eventArray){
         $counter = 1;
@@ -121,10 +139,59 @@
         }
     }
     
-
-    
-
+    //given an EventId, return the tickets information from the database as a Tickets array
+	function getTicketsByEventId($mysqli, $eventId){
+	
+        //create the prepared statement
+		$query = "SELECT ticket_id, ticket_name, ticket_price FROM events_tickets WHERE event_id=?";
+		$statement = $mysqli->prepare($query);
 		
+		//bind parameters for markers where (s=string, i=integer, d=double, b=blob)
+		$statement->bind_param('i',$eventId);
+		
+		//execute query
+		$statement->execute();
+		
+		//bind result variables
+		$statement->bind_result($ticket_id,$ticket_name,$ticket_price);
+        
+        //populate the results into an array of Ticket objects
+        $ticketArray = array();
+        while($statement->fetch()){
+
+            $tempTicket = new Ticket($ticket_id,$ticket_name,$ticket_price);
+            array_push($ticketArray, $tempTicket);
+        }
+        return $ticketArray;    
+    }
+    
+    //given an array of Ticket objects, it prints their info out into the required html
+    function displayTickets($ticketArray){
+        
+        foreach($ticketArray as $element){  
+            //prints the html tags that display a Ticket on the tickets table
+            print '<tr>';
+            print '<td>'.$element->name.'</td>';
+            print '<td>S$'.$element->price.'</td>';
+            print '<td><select class="ticket-num-select" data-ticketid='.$element->id.'>';
+            print '<option>1</option>';
+            print '<option>2</option>';
+            print '<option>3</option>';
+            print '<option>4</option>';
+            print '<option>5</option>';
+            print '</select></td>';
+            print '</tr>';     
+        }
+        
+        //we also print the html tags for the order button
+        print '<tr>';
+        print '<td></td>';
+        print '<td></td>';
+        print '<td><button id="order-btn" class="btn btn-green">Order Now</button></td>';
+        print '</tr>'; 
+       
+    }
+
 	    
     
     

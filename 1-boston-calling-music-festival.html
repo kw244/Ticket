@@ -72,7 +72,10 @@
             <p><span class="event-info-label">Event Details: </span><span id="event-details"></span></p>
             <p><span class="event-info-label">Event Location: </span><span id="event-location"></span></p>
         </div>
-        <div class="col-md-8 col-md-offset-4 event-tickets">
+        
+        <!-- Ticket information for event gets populated here  -->
+        <div class="col-md-8 col-md-offset-4" id="event-tickets">
+
         <table class="table event-tickets-table">
             <thead>
                 <tr>
@@ -82,38 +85,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Standard</td>
-                    <td>S$10</td>
-                    <td><select class="ticket-num-select">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select></td>
-                </tr>
-                <tr>
-                    <td>VIP</td>
-                    <td>S$25</td>
-                    <td><select class="ticket-num-select">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td><a href="" class="btn btn-green">Order Now</a></td>
-                </tr>
+ 
             </tbody>    
         </table>
-        
            
         </div>
+        
         <div class="col-md-12 event-social">
         </div>
         
@@ -140,22 +117,18 @@
 <script src="js/jquery.ui.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-        var eventid =  document.getElementById("eventGrid").dataset.eventid;
-        console.log(eventid);
-        
+        var eventid =  $("#eventGrid").data("eventid");
+
         $.ajax({
             type:"GET",
             data:{'id': eventid},
             url:"database/display-event-page.php",
             dataType:"json",
             success: function(response){
-                console.log(response);
                 $("#event-name").text(response.name);
                 $("#event-image").attr("src",response.image);
                 $("#event-time").text(response.start);
                 $("#event-description").text(response.description);
-                
-                
                 $("#event-details").text(response.details);
                 $("#event-location").text(response.location);
             }                
@@ -165,17 +138,28 @@
 </script>
 
 <script type="text/javascript">
+    /**  Displays ticket information on the event page **/
     $(document).ready(function() {
+        var eventid =  $("#eventGrid").data("eventid");
         $.ajax({
             type:"GET",
-            url:"database/get-events.php",
-            dataType:"json",
+            data:{'id': eventid},
+            url:"database/display-events-tickets.php",
+            dataType:"html",
             success: function(response){
-                console.log(response);
+                //displays html for ticket information within event-tickets-table
+                $("#event-tickets table tbody").append(response); 
+                
+                //we add a click listener to submit data for ticket purchases
+                $("#order-btn").click(function() {
+                    var selectItems = $(".ticket-num-select");
+                    selectItems.each(function(index){
+                        console.log("TicketID "+ $(this).data("ticketid") + ": " + $(this).val());
+                    });
+                });
             }
         });
     });
-
 </script>
 
 </body>
