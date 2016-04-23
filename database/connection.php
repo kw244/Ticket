@@ -109,7 +109,7 @@
             print '</div>';
             print '<h4>'.$element->name.'</h4>';
             print '<p class="date-time">'.$element->start.'</p>'; 
-            print '<p>'.$element->description.'</p>'; 
+            print '<p>'.$element->blurb.'</p>'; 
             print '</div>';
             
             //ensures that each row is properly aligned even if event-frame elements vary in size

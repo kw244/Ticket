@@ -3873,6 +3873,13 @@ a {
 .btn.btn-red:hover {
   background: #e75c00;
 }
+.btn.btn-green {
+  background: #008B00;
+  color: #ffffff;
+}
+.btn.btn-green:hover {
+  background: #00CD00;
+}
 .btn.btn-blue {
   background: #2c3e50;
   color: #ffffff;
@@ -4375,4 +4382,43 @@ a {
   margin-right: 5px;
   color: #d35400;
   vertical-align: top;
+}
+
+/* Event Info on Event Page  */
+
+.event-info-label{
+    font-weight: bold;
+}
+
+/* Ticket Information on Event Page */
+.event-tickets{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid black;
+}
+.event-tickets-table{
+    margin-bottom: 0px;
+}
+
+.ticket-num-select{
+    width: 40px;
+}
+table tr th:first-child {
+    width:50%;
+}
+table tr td:first-child {
+    width:50%;
+}
+
+table tr th:last-child {
+    text-align: right;
+}
+table tr td:last-child {
+    text-align: right;
+}
+table tr th:nth-last-child(2) {
+    text-align: right;
+}
+table tr td:nth-last-child(2) {
+    text-align: right;
 }

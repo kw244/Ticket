@@ -67,14 +67,54 @@
         </div>
         </div>
         <div class="col-md-8 event-info">
-            <p>Event Time: <span id="event-time"></span></p>
-            <p>Event Description: <span id="event-description"></span></p>
-            <p>Event Details: <span id="event-details"></span></p>
-            <p>Event Location: <span id="event-location"></span></p>
+            <p><span class="event-info-label">Event Time: </span><span id="event-time"></span></p>
+            <p><span class="event-info-label">Event Description: </span><span id="event-description"></span></p>
+            <p><span class="event-info-label">Event Details: </span><span id="event-details"></span></p>
+            <p><span class="event-info-label">Event Location: </span><span id="event-location"></span></p>
         </div>
         <div class="col-md-8 col-md-offset-4 event-tickets">
+        <table class="table event-tickets-table">
+            <thead>
+                <tr>
+                    <th>Ticket Type</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Standard</td>
+                    <td>S$10</td>
+                    <td><select class="ticket-num-select">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>VIP</td>
+                    <td>S$25</td>
+                    <td><select class="ticket-num-select">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td><a href="" class="btn btn-green">Order Now</a></td>
+                </tr>
+            </tbody>    
+        </table>
+        
+           
         </div>
-        <div class="col-md-8 col-md-offset-4 event-social">
+        <div class="col-md-12 event-social">
         </div>
         
         
