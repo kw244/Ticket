@@ -1845,6 +1845,9 @@ a.list-group-item-danger.active:focus {
 .fa-user:before {
   content: "\f007";
 }
+.fa-users:before {
+  content: "\f0c0";
+}
 .fa-film:before {
   content: "\f008";
 }
@@ -3841,14 +3844,23 @@ a {
   margin-bottom: 0;
 }
 /* FORMS */
+
 .default-form input {
   padding: 10px 15px;
+  margin: 5px 0px;
   height: 40px;
   border: 1px solid #e0e0e0;
   -webkit-transition: 0.2s ease-in;
   -o-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
 }
+.default-form label {
+  padding-top: 10px;
+  padding-left: 10px;
+  margin-top: 5px;
+  margin-left: 15px;
+}
+
 .default-form button {
   border: none;
   height: 40px;
@@ -4421,4 +4433,91 @@ table tr th:nth-last-child(2) {
 }
 table tr td:nth-last-child(2) {
     text-align: right;
+}
+
+/* Event Setup Page*/
+
+#eventSetup .form-title{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.event-form {
+  text-align: center;
+  margin: 0 auto;
+}
+.default-form .field {
+  position: relative;
+  margin-right: 6px;
+  display: inline-block;
+}
+.default-form .field:last-child {
+  margin-right: 0;
+}
+@media (max-width: 768px) {
+  .default-form .field {
+    margin: 0 0 15px 0;
+    width: 100%;
+    display: block;
+  }
+}
+.default-form  input {
+  width: 100%;
+  font-size: 13px;
+  border-color: black;
+  border-radius: 3px;
+}
+@media (max-width: 992px) {
+  .default-form  input {
+    width: 170px;
+  }
+}
+@media (max-width: 768px) {
+  .default-form  input {
+    width: 100%;
+  }
+}
+.default-form  button {
+  height: 41px;
+}
+.default-form .field select {
+  display: none;
+}
+.default-form .field .select-clone {
+  position: absolute;
+  margin-top: -2px;
+  left: 0;
+  right: 0;
+  display: none;
+  background: #ffffff;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  z-index: 999;
+}
+.default-form .field .select-clone li {
+  padding: 10px 15px;
+  display: block;
+  text-align: left;
+  cursor: pointer;
+  border-bottom: 1px solid #e0e0e0;
+}
+.default-form .field .select-clone li:last-child {
+  border-bottom: none;
+}
+.default-form .fa {
+  position: absolute;
+  right: 20px;
+  top: 17px;
+  color: #999;
+}
+.default-form .field .fa.fa-sort {
+  cursor: pointer;
+}
+.default-form  button {
+  border-radius: 3px;
+}
+@media (max-width: 768px) {
+  .default-form  button {
+    width: 100%;
+  }
 }

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Ticket</title>
+  <title>Ticket - Create Your Event</title>
   <link rel="icon" href="resources/tenko-logo.png">
   
   <!-- Stylesheets -->
@@ -53,48 +53,38 @@
   <div class="container">
     
     <!-- Include unique event id so that we can pull the necessary data from our database -->
-    <div class="row" id="eventGrid" data-eventid="6">
-        <div class="col-md-8 col-md-offset-2 preamble">
-            <h3 id="event-name"></h3>
-        </div> 
-        
-        <!-- event page gets populated here -->
-        <div class="col-md-4 event-frame">
-        <div class= "image-frame">
-            <img id="event-image" src="" alt="" class="img-responsive">
-        </div>
-        </div>
-        <div class="col-md-8 event-info">
-            <p><span class="event-info-label">Event Time: </span><span id="event-time"></span></p>
-            <p><span class="event-info-label">Event Description: </span><span id="event-description"></span></p>
-            <p><span class="event-info-label">Event Details: </span><span id="event-details"></span></p>
-            <p><span class="event-info-label">Event Location: </span><span id="event-location"></span></p>
-        </div>
-        
-        <!-- Ticket information for event gets populated here  -->
-        <div class="col-md-8 col-md-offset-4" id="event-tickets">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2" id="eventSetup">     
+            <form action="create-event.php" class="default-form form-horizontal" method="post">
+                <h3 class="form-title">Create Your Event</h3>   
+                    <div class="form-group">
+                        <label class="col-md-2">Event Name</label>
+                        <div class="col-md-8">
+                            <input type="name" name="name" placeholder="Your Event Name" required>
+                            <i class="fa fa-users"></i>
+                        </div>
+                    </div> 
+                    <div class="form-group">
+                        <label class="col-md-2">Start Date</label>
+                        <div class="col-md-4">
+                            <input type="datetime" name="event-start" placeholder="Date" required>
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="datetime" name="event-end" placeholder="Time" required>
+                            <i class="fa fa-clock-o"></i>
+                        </div>
+                    </div>
+                    
 
-        <table class="table event-tickets-table">
-            <thead>
-                <tr>
-                    <th>Ticket Type</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                </tr>
-            </thead>
-            <tbody>
- 
-            </tbody>    
-        </table>
-           
+            </form>
+
         </div>
-        
-        <div class="col-md-12 event-social">
-        </div>
-        
-        
-        
     </div>
+    
+        
+        
+  </div>
     
   </div>
   
